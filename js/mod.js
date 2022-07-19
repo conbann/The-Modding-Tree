@@ -1,8 +1,8 @@
 let modInfo = {
 	name: "The ??? Tree",
 	id: "mymod",
-	author: "nobody",
-	pointsName: "points",
+	author: "conbann",
+	pointsName: "",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
@@ -13,7 +13,7 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0",
+	num: "0.01",
 	name: "Literally nothing",
 }
 
@@ -56,7 +56,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e280000000"))
+	return player.points.gte(new Decimal("e280000000000000000"))
 }
 
 
