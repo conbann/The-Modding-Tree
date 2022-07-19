@@ -15,6 +15,7 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade('p', 11)) gain = gain.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -24,6 +25,14 @@ addLayer("p", {
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    upgrades: {
+        11: {
+        title: "1st step of a long journy....",
+        description: "Double your point gain.",
+        cost: new Decimal(1),
+        },
+
+    },
     layerShown(){return true}
     
 })
