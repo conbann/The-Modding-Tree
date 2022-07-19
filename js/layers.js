@@ -26,3 +26,13 @@ addLayer("p", {
     ],
     layerShown(){return true}
 })
+addLayer ("id",{
+    blah,
+    upgrades: { 
+         11: {
+            description:("stuff"),
+            cost: new decimal(100)
+        
+        }
+    }
+})
