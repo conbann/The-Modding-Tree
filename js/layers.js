@@ -117,6 +117,15 @@ addLayer("r", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             },
+            11: {
+                title: "1st Rebirth upgrade!",
+                description: "2 times points and also rebirths boost prestige",
+                cost: new Decimal(1),
+                effect() { 
+                    return player[this.layer].points.add(1).pow(0.75)
+                },
+                effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+                },
     },
     milestones: {
         0: {
@@ -126,29 +135,52 @@ addLayer("r", {
         },
         1: {
             requirementDescription: "5 Rebirths",
-            effectDescription: "New menu in rebirths",
+            effectDescription: "New layer",
             done() { return player[this.layer].points.gte(5) }
         },
         
     },
-    tabFormat: {
-        "Main": {
-            content:[
-                "main-display",
-                "prestige-button",
-                "milestones",
-                "upgrades",
-            ]
-        },
-        "Shards": {
-            content:[
-                "main-display",
-                "upgrades",
-            ]
-        }
-    },
+  
     layerShown() {
         return player.r.unlocked ||hasUpgrade("p","14")
+      },
+    
+})
+addLayer("s", {
+    name: "Shards", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "S", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+        rebirthShards: new Decimal(0),
+    }},
+    color: "#FF0000",
+    requires: new Decimal(50), // Can be a function that takes requirement increases into account
+    resource: "Shards", // Name of prestige currency
+    baseResource: "prestige points", // Name of resource prestige is based on
+    baseAmount() {return player.p.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 1.25, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: .5, // Row the layer is in on the tree (0 is the first row)
+
+    upgrades: {
+       
+    },
+    milestones: {
+        
+        
+    },
+  
+    layerShown() {
+        return player.r.unlocked ||hasMilestone("r","11")
       },
     
 })
