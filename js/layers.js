@@ -16,6 +16,7 @@ addLayer("p", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('p', 13)) mult = mult.times(upgradeEffect('p', 13))
+        if (hasUpgrade('r', 11)) mult = mult.times(upgradeEffect('r', 11))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -34,7 +35,7 @@ addLayer("p", {
         12: {
             title: "2nd upgrade!",
             description: "Prestige Points boost Points!!",
-            cost: new Decimal(5),
+            cost: new Decimal(3),
             effect() { 
                 return player[this.layer].points.add(1).pow(0.35)
             },
@@ -43,16 +44,16 @@ addLayer("p", {
             13: {
                 title: "Decent upgrade.",
                 description: "Points boost prestige!",
-                cost: new Decimal(15),
+                cost: new Decimal(10),
                 effect() { 
-                    return player.points.add(1).pow(0.075)
+                    return player.points.add(1).pow(0.1)
                 },
                 effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
                 },
                 14: {
                     title: "The next layer...",
                     description: "you unlock a new layer",
-                    cost: new Decimal(50),
+                    cost: new Decimal(30),
                     
                     },
     
@@ -66,7 +67,7 @@ addLayer("r", {
     symbol: "r", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
-        unlocked: true,
+        unlocked: false,
 		points: new Decimal(0),
     }},
     color: "#FF0000",
@@ -88,9 +89,21 @@ addLayer("r", {
         {key: "r", description: "r: Reset for rebirth points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     upgrades: {
+        13: {
+            title: "1st Rebirth upgrade!",
+            description: "2 times points and also rebirths boost prestige",
+            cost: new Decimal(15),
+            effect() { 
+                return player.r.points.add(1).pow(0.25)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            },
        
     
-
+        
+    },
+    onPrestige() {
+        player[this.layer].unlocked = true
     },
     layerShown() {
         return hasUpgrade("p","14")
