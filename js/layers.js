@@ -17,6 +17,7 @@ addLayer("p", {
         mult = new Decimal(1)
         if (hasUpgrade('p', 13)) mult = mult.times(upgradeEffect('p', 13))
         if (hasUpgrade('r', 11)) mult = mult.times(upgradeEffect('r', 11))
+        if (hasUpgrade('r', 11)) mult = mult.exponent(1.5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -52,10 +53,26 @@ addLayer("p", {
                 },
                 14: {
                     title: "The next layer...",
-                    description: "2 tiems points and you unlock a new layer",
+                    description: "2 tiems points",
                     cost: new Decimal(30),
                     
                     },
+                    21: {
+                        title: "New row :O.",
+                        description: "points boost points",
+                        cost: new Decimal(100),
+                        effect() { 
+                            return player.points.add(1).pow(0.275)
+                        },
+                        effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+                        
+                        },
+                        22: {
+                            title: "another prestige upgrade!?!",
+                            description: "prestige gain is buffed by ^1.5",
+                            cost: new Decimal(250),
+                            
+                            },
     
 
     },
@@ -98,8 +115,13 @@ addLayer("r", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             },
-       
-    
+    },
+    milestones: {
+        0: {
+            requirementDescription: "1 Rebirth",
+            effectDescription: "Check back in prestige ;)",
+            done() { return player[this.layer].points.gte(1) }
+        }
         
     },
     
