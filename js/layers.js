@@ -94,7 +94,7 @@ addLayer("r", {
             description: "2 times points and also rebirths boost prestige",
             cost: new Decimal(1),
             effect() { 
-                return player.r.points.add(1).pow(0.25)
+                return player[this.layer].points.add(1).pow(0.25)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             },
@@ -102,11 +102,10 @@ addLayer("r", {
     
         
     },
-    onPrestige() {
-        player[this.layer].unlocked = true
-    },
+    
+    
     layerShown() {
-        return hasUpgrade("p","14")
+        return player.r.unlocked ||hasUpgrade("p","14")
       },
     
 })
