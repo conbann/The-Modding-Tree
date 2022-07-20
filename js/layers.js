@@ -154,13 +154,13 @@ addLayer("s", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#FF0000",
-    requires: new Decimal(1), // Can be a function that takes requirement increases into account
+    color: "#800080",
+    requires: new Decimal(1000), // Can be a function that takes requirement increases into account
     resource: "Shards", // Name of prestige currency
-    baseResource: "rebirth points", // Name of resource prestige is based on
+    baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.r.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.35, // Prestige currency exponent
+    exponent: 0.1, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
