@@ -139,6 +139,12 @@ addLayer("r", {
                 "milestones",
                 "upgrades",
             ]
+        },
+        "Shards": {
+            content:[
+                "main-display",
+                "upgrades",
+            ]
         }
     },
     layerShown() {
