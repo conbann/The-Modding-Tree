@@ -87,6 +87,7 @@ addLayer("r", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+        rebirthShards: new Decimal(0),
     }},
     color: "#FF0000",
     requires: new Decimal(50), // Can be a function that takes requirement increases into account
@@ -122,11 +123,20 @@ addLayer("r", {
             requirementDescription: "1 Rebirth",
             effectDescription: "Check back in prestige ;)",
             done() { return player[this.layer].points.gte(1) }
-        }
+        },
+        1: {
+            requirementDescription: "5 Rebirths",
+            effectDescription: "New menu in rebirths",
+            done() { return player[this.layer].points.gte(5) }
+        },
         
     },
-    
-    
+    tabFormat: ['upgrades','resource display',], 
+    subtabs: { Shards: ['display-text', () => "You have " + player[this.layer].rebirthShards.toString() + " shards"],
+      
+         content: ['upgrades','resource display',],
+      
+    },
     layerShown() {
         return player.r.unlocked ||hasUpgrade("p","14")
       },
