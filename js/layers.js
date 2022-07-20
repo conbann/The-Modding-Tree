@@ -131,8 +131,8 @@ addLayer("r", {
         },
         
     },
-    tabFormat: ['upgrades','resource-display','Shards','milestones','prestige-button',], 
-    subtabs:{ Shards: { content: ['upgrades','resource-display','milestones','prestige-button', ['display-text', () => "You have " + player[this.layer].rebirthShards.toString() + " shards"]],},
+    tabFormat: ['Shards','prestige-button','resource-display','upgrades','milestones',], 
+    subtabs:{ Shards: { content: ['upgrades','resource-display', ['display-text', () => "You have " + player[this.layer].rebirthShards.toString() + " shards"]],},
     },
     layerShown() {
         return player.r.unlocked ||hasUpgrade("p","14")
