@@ -52,7 +52,7 @@ addLayer("p", {
                 },
                 14: {
                     title: "The next layer...",
-                    description: "you unlock a new layer",
+                    description: "2 tiems points and you unlock a new layer",
                     cost: new Decimal(30),
                     
                     },
@@ -71,7 +71,7 @@ addLayer("r", {
 		points: new Decimal(0),
     }},
     color: "#FF0000",
-    requires: new Decimal(75), // Can be a function that takes requirement increases into account
+    requires: new Decimal(50), // Can be a function that takes requirement increases into account
     resource: "rebirth points", // Name of prestige currency
     baseResource: "prestige points", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
@@ -92,7 +92,7 @@ addLayer("r", {
         13: {
             title: "1st Rebirth upgrade!",
             description: "2 times points and also rebirths boost prestige",
-            cost: new Decimal(15),
+            cost: new Decimal(1),
             effect() { 
                 return player.r.points.add(1).pow(0.25)
             },
