@@ -64,6 +64,7 @@ addLayer("p", {
                         effect() { 
                             return player.points.add(1).pow(0.275)
                         },
+                        unlocked() {return hasMilestone("r","0")},
                         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
                         
                         },
@@ -71,7 +72,7 @@ addLayer("p", {
                             title: "another prestige upgrade!?!",
                             description: "prestige gain is buffed by ^1.5",
                             cost: new Decimal(250),
-                            
+                            unlocked() {return hasMilestone("r","0")},
                             },
     
 
