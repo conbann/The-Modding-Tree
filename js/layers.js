@@ -70,12 +70,12 @@ addLayer("r", {
 		points: new Decimal(0),
     }},
     color: "#FF0000",
-    requires: new Decimal(10), // Can be a function that takes requirement increases into account
+    requires: new Decimal(75), // Can be a function that takes requirement increases into account
     resource: "rebirth points", // Name of prestige currency
     baseResource: "prestige points", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.75, // Prestige currency exponent
+    exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
