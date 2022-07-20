@@ -89,7 +89,7 @@ addLayer("r", {
         {key: "r", description: "r: Reset for rebirth points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     upgrades: {
-        13: {
+        11: {
             title: "1st Rebirth upgrade!",
             description: "2 times points and also rebirths boost prestige",
             cost: new Decimal(1),
