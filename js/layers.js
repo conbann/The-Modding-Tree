@@ -180,7 +180,7 @@ addLayer("s", {
     },
   
     layerShown() {
-        return player.r.unlocked ||hasMilestone("r","1")
+        return player.s.unlocked ||hasMilestone("r","1")
       },
     
 })
