@@ -38,7 +38,7 @@ addLayer("p", {
             description: "Prestige Points boost Points!!",
             cost: new Decimal(3),
             effect() { 
-                return player[this.layer].points.add(1).times(0.05)
+                return player[this.layer].points.add(1).pow(0.01)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             },
@@ -47,7 +47,7 @@ addLayer("p", {
                 description: "Points boost prestige!",
                 cost: new Decimal(10),
                 effect() { 
-                    return player.points.add(1).times(0.1)
+                    return player.points.add(1).pow(0.008)
                 },
                 effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
                 },
@@ -62,7 +62,7 @@ addLayer("p", {
                         description: "points boost points",
                         cost: new Decimal(100),
                         effect() { 
-                            return player.points.add(1).pow(0.005)
+                            return player.points.add(1).pow(0.0075)
                         },
                         unlocked() {return hasMilestone("r","0")},
                         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
