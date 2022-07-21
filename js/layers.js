@@ -135,6 +135,7 @@ addLayer("r", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             },
+            
             12: {
                 title: "oooo something new",
                 description: "points are boosted by rebirths ",
@@ -144,6 +145,15 @@ addLayer("r", {
                 },
                 effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
                 },
+                13: {
+                    title: "extra boost",
+                    description: "points are boosted by shards ",
+                    cost: new Decimal(10),
+                    effect() { 
+                        return player.s.points.add(1).pow(0.55)
+                    },
+                    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+                    },
     },
     milestones: {
         0: {
