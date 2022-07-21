@@ -120,7 +120,7 @@ addLayer("r", {
             12: {
                 title: "oooo something new",
                 description: "points are boosted by x^1.25 (x is rebirths)",
-                cost: new Decimal(1),
+                cost: new Decimal(5),
                 effect() { 
                     return player[this.layer].points.add(1).pow(1.25)
                 },
@@ -155,11 +155,11 @@ addLayer("s", {
 		points: new Decimal(0),
     }},
     color: "#800080",
-    requires: new Decimal(1000), // Can be a function that takes requirement increases into account
+    requires: new Decimal(5), // Can be a function that takes requirement increases into account
     resource: "Shards", // Name of prestige currency
-    baseResource: "points", // Name of resource prestige is based on
-    baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    baseResource: "rebirth points", // Name of resource prestige is based on
+    baseAmount() {return player.r.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.25, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
