@@ -6,6 +6,7 @@ addLayer("p", {
         unlocked: true,
 		points: new Decimal(0),
     }},
+    branches: ['p', 'r'],
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "prestige points", // Name of prestige currency
@@ -105,6 +106,7 @@ addLayer("r", {
 		points: new Decimal(0),
         rebirthShards: new Decimal(0),
     }},
+    branches: ['r', 's'],
     color: "#FF0000",
     requires: new Decimal(50), // Can be a function that takes requirement increases into account
     resource: "rebirth points", // Name of prestige currency
