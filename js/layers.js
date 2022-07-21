@@ -95,7 +95,7 @@ addLayer("r", {
     baseResource: "prestige points", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 1.25, // Prestige currency exponent
+    exponent: 0.75, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
@@ -117,12 +117,12 @@ addLayer("r", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             },
-            11: {
-                title: "1st Rebirth upgrade!",
-                description: "2 times points and also rebirths boost prestige",
+            12: {
+                title: "oooo something new",
+                description: "points are boosted by x^1.25 (x is rebirths)",
                 cost: new Decimal(1),
                 effect() { 
-                    return player[this.layer].points.add(1).pow(0.75)
+                    return player[this.layer].points.add(1).pow(1.25)
                 },
                 effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
                 },
@@ -160,7 +160,7 @@ addLayer("s", {
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.1, // Prestige currency exponent
+    exponent: 0.25, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
@@ -171,25 +171,19 @@ addLayer("s", {
     row: 1, // Row the layer is in on the tree (0 is the first row)
 
     upgrades: {
+        11: {
+            title: "Shard upgrade"
+
+        }
        
     },
     milestones: {
         
         
     },
-    buyables: {
-        11: {
-            cost(x) { return new Decimal(1).mul(x) },
-            display() { return "Blah" },
-            canAfford() { return player[this.layer].points.gte(this.cost()) },
-            buy() {
-                player[this.layer].points = player[this.layer].points.sub(this.cost())
-                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
-            },
-            
-        },
+    
         
-    },
+    
   
     layerShown() {
         return player.s.unlocked ||hasMilestone("r","1")
