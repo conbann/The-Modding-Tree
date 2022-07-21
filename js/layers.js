@@ -49,7 +49,7 @@ addLayer("p", {
                 description: "Points boost prestige!",
                 cost: new Decimal(10),
                 effect() { 
-                    return player.points.add(1).pow(0.008)
+                    return player.points.add(1).pow(0.015)
                 },
                 effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
                 },
