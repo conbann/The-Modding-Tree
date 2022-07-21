@@ -63,7 +63,7 @@ addLayer("p", {
                         description: "points boost points",
                         cost: new Decimal(100),
                         effect() { 
-                            return player.points.add(1).pow(0.0075)
+                            return player.points.add(1).pow(0.01)
                         },
                         unlocked() {return hasMilestone("r","0")},
                         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
