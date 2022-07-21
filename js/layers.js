@@ -38,7 +38,7 @@ addLayer("p", {
             description: "Prestige Points boost Points!!",
             cost: new Decimal(3),
             effect() { 
-                return player[this.layer].points.add(1).pow(0.35)
+                return player[this.layer].points.add(1).pow(0.24)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             },
@@ -47,7 +47,7 @@ addLayer("p", {
                 description: "Points boost prestige!",
                 cost: new Decimal(10),
                 effect() { 
-                    return player.points.add(1).pow(0.1)
+                    return player.points.add(1).pow(0.082)
                 },
                 effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
                 },
@@ -62,7 +62,7 @@ addLayer("p", {
                         description: "points boost points",
                         cost: new Decimal(100),
                         effect() { 
-                            return player.points.add(1).pow(0.275)
+                            return player.points.add(1).pow(0.158)
                         },
                         unlocked() {return hasMilestone("r","0")},
                         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
@@ -119,10 +119,10 @@ addLayer("r", {
             },
             12: {
                 title: "oooo something new",
-                description: "points are boosted by x^1.25 (x is rebirths)",
+                description: "points are boosted by x^1.125 (x is rebirths)",
                 cost: new Decimal(5),
                 effect() { 
-                    return player[this.layer].points.add(1).pow(1.25)
+                    return player[this.layer].points.add(1).pow(1.125)
                 },
                 effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
                 },
