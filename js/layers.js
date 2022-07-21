@@ -19,11 +19,12 @@ addLayer("p", {
         mult = new Decimal(1)
         if (hasUpgrade('p', 13)) mult = mult.times(upgradeEffect('p', 13))
         if (hasUpgrade('r', 11)) mult = mult.times(upgradeEffect('r', 11))
-        if (hasUpgrade('p', 22)) mult = mult.pow(1.05)
-        if (hasUpgrade('p', 24)) mult = mult.pow(1.2)
+        
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
+        if (hasUpgrade('p', 22)) mult = mult.pow(1.05)
+        if (hasUpgrade('p', 24)) mult = mult.pow(1.2)
         return new Decimal(1)
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
