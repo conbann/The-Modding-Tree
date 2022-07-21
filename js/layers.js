@@ -81,6 +81,7 @@ addLayer("p", {
                                 cost: new Decimal(7.5e3),
                                 effct() { let eff = Decimal.pow(1.4, player.p.upgrades.length);
                                 },
+                                effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
                                 unlocked() {return hasUpgrade("s","11")},
                                 },
                                 24: {
