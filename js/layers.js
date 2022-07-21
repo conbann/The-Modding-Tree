@@ -6,6 +6,7 @@ addLayer("p", {
         unlocked: true,
 		points: new Decimal(0),
     }},
+    passiveGeneration() { return hasUpgrade("s",13)&&player.ma.current!="p" },
     branches: ['p', 'r'],
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -153,6 +154,7 @@ addLayer("r", {
                         return player.s.points.add(1).pow(0.55)
                     },
                     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+                    unlocked() {return hasUpgrade('s',12)}
                     },
     },
     milestones: {
@@ -199,10 +201,25 @@ addLayer("s", {
     row: 1, // Row the layer is in on the tree (0 is the first row)
 
     upgrades: {
+        
         11: {
             title: "Shard upgrade",
-            description: "5 times points and 2 new point upgrades",
+            description: "5 times points and 2 new prestige upgrades",
             cost: new Decimal(1),
+           
+
+        },
+        12: {
+            title: "idk names anymore",
+            description: "new rebirth upgrade",
+            cost: new Decimal(2),
+           
+
+        },
+        13: {
+            title: "FINALY AUTO PRESTIGE",
+            description: "Auto generate prestige points",
+            cost: new Decimal(3),
            
 
         }
