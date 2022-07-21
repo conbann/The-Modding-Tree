@@ -87,7 +87,7 @@ addLayer("p", {
                                 24: {
                                     title: "MORE PRESTIGE!",
                                     description: "prestige gain is buffed by ^1.2",
-                                    cost: new Decimal(1e5),
+                                    cost: new Decimal(2.5e4),
                                     unlocked() {return hasUpgrade("s","11")},
                                     },
     
@@ -190,7 +190,7 @@ addLayer("s", {
         11: {
             title: "Shard upgrade",
             description: "5 times points and 2 new point upgrades",
-            cost: new Decimal(2),
+            cost: new Decimal(1),
            
 
         }
