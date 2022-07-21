@@ -95,7 +95,7 @@ addLayer("r", {
     baseResource: "prestige points", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 1.35, // Prestige currency exponent
+    exponent: 1.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
@@ -119,10 +119,10 @@ addLayer("r", {
             },
             12: {
                 title: "oooo something new",
-                description: "points are boosted by x^1.125 (x is rebirths)",
+                description: "points are boosted by rebirths ",
                 cost: new Decimal(5),
                 effect() { 
-                    return player[this.layer].points.add(1).pow(1.125)
+                    return player[this.layer].points.add(1).pow(0.75)
                 },
                 effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
                 },
