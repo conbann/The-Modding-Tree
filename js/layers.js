@@ -53,7 +53,7 @@ addLayer("p", {
                 },
                 14: {
                     title: "The next layer...",
-                    description: "2 tiems points",
+                    description: "2 times points",
                     cost: new Decimal(30),
                     
                     },
@@ -62,7 +62,7 @@ addLayer("p", {
                         description: "points boost points",
                         cost: new Decimal(100),
                         effect() { 
-                            return player.points.add(1).pow(0.158)
+                            return player.points.add(1).pow(0.076)
                         },
                         unlocked() {return hasMilestone("r","0")},
                         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
