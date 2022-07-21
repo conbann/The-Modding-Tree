@@ -17,7 +17,8 @@ addLayer("p", {
         mult = new Decimal(1)
         if (hasUpgrade('p', 13)) mult = mult.times(upgradeEffect('p', 13))
         if (hasUpgrade('r', 11)) mult = mult.times(upgradeEffect('r', 11))
-        if (hasUpgrade('p', 22)) mult = mult.pow(1.5)
+        if (hasUpgrade('p', 22)) mult = mult.pow(1.05)
+        if (hasUpgrade('p', 24)) mult = mult.pow(1.2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -70,12 +71,26 @@ addLayer("p", {
                         },
                         22: {
                             title: "another prestige upgrade!?!",
-                            description: "prestige gain is buffed by ^1.5",
+                            description: "prestige gain is buffed by ^1.05",
                             cost: new Decimal(250),
                             unlocked() {return hasMilestone("r","0")},
                             },
+                            23: {
+                                title: "Upgrade power",
+                                description: "Prestige points are boosted by Prestige upgrades bought",
+                                cost: new Decimal(7.5e3),
+                                effct() { let eff = Decimal.pow(1.4, player.p.upgrades.length);
+                                },
+                                unlocked() {return hasUpgrade("s","11")},
+                                },
+                                24: {
+                                    title: "MORE PRESTIGE!",
+                                    description: "prestige gain is buffed by ^1.2",
+                                    cost: new Decimal(1e5),
+                                    unlocked() {return hasUpgrade("s","11")},
+                                    },
     
-
+                           
     },
     layerShown(){return true}
     
@@ -113,7 +128,7 @@ addLayer("r", {
             description: "2 times points and also rebirths boost prestige",
             cost: new Decimal(1),
             effect() { 
-                return player[this.layer].points.add(1).pow(0.75)
+                return player[this.layer].points.add(1).pow(0.6)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
             },
@@ -172,7 +187,10 @@ addLayer("s", {
 
     upgrades: {
         11: {
-            title: "Shard upgrade"
+            title: "Shard upgrade",
+            description: "5 times points and 2 new point upgrades",
+            cost: new Decimal(2),
+           
 
         }
        
