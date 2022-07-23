@@ -6,7 +6,7 @@ addLayer("p", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    //passiveGeneration() { return hasUpgrade("s",13)&&player.ma.current!="p" },
+    //xpassiveGeneration() { return hasUpgrade("s",13)&&player.ma.current!="p" },
     branches: ['p', 'r'],
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -218,8 +218,8 @@ addLayer("s", {
 
         },
         13: {
-            title: "FINALY AUTO PRESTIGE",
-            description: "Auto generate prestige points",
+            title: "Prestige stuff",
+            description: "",
             cost: new Decimal(3),
            
 
