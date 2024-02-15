@@ -33,7 +33,7 @@ addLayer("p", {
     ],
     upgrades: {
         11: {
-        title: "1st step of a long journy....",
+        title: "1st step of a long journey....",
         description: "Double your point gain.",
         cost: new Decimal(1),
         },
@@ -42,9 +42,17 @@ addLayer("p", {
             description: "Prestige Points boost Points!!",
             cost: new Decimal(3),
             effect() { 
-                return player[this.layer].points.add(1).pow(0.01)
+                if (player[this.layer].points.gte(1e6)) {
+                    // If player's points are greater than or equal to 1e6, set the power to 20
+                    return player[this.layer].points.add(1).pow(0.25);
+                } else {
+                    // If not, use the original formula
+                    return player[this.layer].points.add(1).pow(0.43);
+                }
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id)) + "x"; },
+        },
+           
             },
             13: {
                 title: "Decent upgrade.",
@@ -96,9 +104,9 @@ addLayer("p", {
     
                            
     },
-    layerShown(){return true}
+    layerShown(),{return :true}
     
-})
+)
 addLayer("r", {
     name: "rebirth", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "r", // This appears on the layer's node. Default is the id with the first letter capitalized
